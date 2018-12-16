@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  customermanagementapi:
+    image: customermanagementapi
+    ports: 
+      - "4002:5000"
+    build:
+      context: .
+      dockerfile: CustomerManagementAPI/Dockerfile
+
+    networks:
+      - customermanagementapi
+
+networks: 
+  customermanagementapi: 
+    driver: bridge

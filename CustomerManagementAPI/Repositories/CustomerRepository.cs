@@ -31,5 +31,15 @@ namespace CustomerManagementAPI.Repositories
             }
         }
 
+        public IEnumerable<Customer> Get()
+        {
+            var result = this.Collection.Find(FilterDefinition<Customer>.Empty);
+
+            if (result == null)
+                return new List<Customer>();
+
+            return result.ToList();
+        }
+
     }
 }

@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CustomerManagementAPI.Controllers
 {
     [Route("/api/[controller]")]
+    [Produces("application/json")]
     public class CustomerController : Controller
     {
         private readonly ICustomerRepository _customerRepository;
@@ -27,6 +28,19 @@ namespace CustomerManagementAPI.Controllers
                 Customer customer = new Customer() { Email = command.Email, Name = command.Name };
                 _customerRepository.Save(customer);
                 return  Ok();
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+            }
+        }
+
+        [HttpGet]
+        public IActionResult Get()
+        {
+            try
+            {
+                return Ok(_customerRepository.Get());
             }
             catch (Exception e)
             {

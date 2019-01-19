@@ -12,6 +12,24 @@ services:
     networks:
       - customermanagementapi
 
+# Inicio da configuracao do MongoDB
+  blackyellow_db:
+    image: mongo:3.4
+    ports:
+      - "27017"
+    volumes:
+      - db_mongo:/data/db
+    networks:
+      - customermanagementapi
+    restart: always
+    command: --storageEngine wiredTiger
+    environment: 
+      MONGO_INITDB_ROOT_USERNAME: mongouser
+      MONGO_INITDB_ROOT_PASSWORD: GPX4WOwpcvOc9Wm70gAG8It7tKA0Cy090ZVO82cEJsExogsMDY
+# Fim da configuracao do MongoDB
+
+volumes:
+  db_mongo:
 networks: 
   customermanagementapi: 
     driver: bridge

@@ -1,4 +1,6 @@
 ﻿
+using CustomerManagementAPI.DataAccess;
+using CustomerManagementAPI.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 
@@ -22,6 +24,19 @@ namespace CustomerManagementAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            // Registro os objetos que vou usar na aplicação
+            services.AddSingleton(this.Configuration);
+            services.AddTransient<ICustomerRepository, CustomerRepository>();
+
+            services.AddScoped<IDbContext>(sp =>
+            {
+                return new MongoContext()
+                {
+                    ConnectionString = this.Configuration.GetSection("Mongo:ConnectionString").Get<string>(),
+                    DataBase = this.Configuration.GetSection("Mongo:DataBase").Get<string>()
+                };
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

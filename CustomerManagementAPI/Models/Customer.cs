@@ -1,7 +1,8 @@
 ﻿using System;
-namespace CustomerManagementAPI.Commands
+
+namespace CustomerManagementAPI.Models
 {
-    public class RegisterCommand
+    public class Customer
     {
         public Guid Id { get; set; }
 

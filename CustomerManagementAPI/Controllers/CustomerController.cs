@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BlackYellow.CustomerManagementAPI.Events;
+using BlackYellow.Infrastructure.Messaging;
 using CustomerManagementAPI.Commands;
 using CustomerManagementAPI.Models;
 using CustomerManagementAPI.Repositories;
@@ -15,19 +17,25 @@ namespace CustomerManagementAPI.Controllers
     public class CustomerController : Controller
     {
         private readonly ICustomerRepository _customerRepository;
+        private readonly IMessagePublisher _messagePublisher;
 
-        public CustomerController(ICustomerRepository customerRepository)
+        public CustomerController(ICustomerRepository customerRepository, IMessagePublisher messagePublisher)
         {
             _customerRepository = customerRepository;
+            _messagePublisher = messagePublisher;
     }
         [HttpPost]
-        public IActionResult Register([FromBody] RegisterCustomer command)
+        public async Task<IActionResult> Register([FromBody] RegisterCustomer command)
         {
             try
             {
                 Customer customer = new Customer() { Email = command.Email, Name = command.Name };
                 _customerRepository.Save(customer);
-                return  Ok();
+
+                CustomerRegistered e = new CustomerRegistered(Guid.NewGuid(), command.Id.ToString(), command.Name, command.Email);
+                await _messagePublisher.PublishMessageAsync(e.MessageType, e, "");
+
+                return  Accepted();
             }
             catch (Exception e)
             {

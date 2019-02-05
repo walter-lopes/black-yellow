@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BlackYellow.Infrastructure.Messaging
 {
-    public class RabbitMQMessagePublisher
+    public class RabbitMQMessagePublisher : IMessagePublisher
     {
         private readonly string _host;
         private readonly string _username;

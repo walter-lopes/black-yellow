@@ -1,4 +1,5 @@
 ﻿
+using BlackYellow.Infrastructure.Messaging;
 using CustomerManagementAPI.DataAccess;
 using CustomerManagementAPI.Repositories;
 using Microsoft.AspNetCore.Builder;
@@ -28,6 +29,8 @@ namespace CustomerManagementAPI
             // Registro os objetos que vou usar na aplicação
             services.AddSingleton(this.Configuration);
             services.AddTransient<ICustomerRepository, CustomerRepository>();
+
+            services.AddTransient<IMessagePublisher>((sp) => new RabbitMQMessagePublisher("localhost", "walter", "123456", "blackyellow"));
 
             services.AddScoped<IDbContext>(sp =>
             {

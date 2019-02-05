@@ -25,7 +25,7 @@ namespace CustomerManagementAPI.Controllers
             _messagePublisher = messagePublisher;
     }
         [HttpPost]
-        public async Task<IActionResult> Register([FromBody] RegisterCustomer command)
+        public async Task<IActionResult> Post([FromBody] RegisterCustomer command)
         {
             try
             {

@@ -6,7 +6,6 @@ POST {{url}}/api/customer
 Content-Type: application/json
 
 {
-    "id": "ba0fbaf3-cba1-40e1-8000-73a8ab1135a9",
     "name": "Walter Vinicius",
     "email": "walter.vlopes@gmail.com"
 }

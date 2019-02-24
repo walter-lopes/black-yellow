@@ -32,7 +32,7 @@ namespace CustomerManagementAPI.Controllers
                 Customer customer = new Customer() { Email = command.Email, Name = command.Name };
                 _customerRepository.Save(customer);
 
-                CustomerRegistered e = new CustomerRegistered(Guid.NewGuid(), command.Id.ToString(), command.Name, command.Email);
+                CustomerRegistered e = new CustomerRegistered(Guid.NewGuid(), customer.Id.ToString(), command.Name, command.Email);
                 await _messagePublisher.PublishMessageAsync(e.MessageType, e, "");
 
                 return  Accepted();

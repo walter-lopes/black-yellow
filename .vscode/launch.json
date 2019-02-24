@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/CustomerManagementAPI/bin/Debug/netcoreapp2.0/CustomerManagementAPI.dll",
+            "program": "${workspaceFolder}/CustomerManagementAPI/bin/Debug/netcoreapp2.2/BlackYellow.CustomerManagementAPI.dll",
             "args": [],
             "cwd": "${workspaceFolder}/CustomerManagementAPI",
             "stopAtEntry": false,

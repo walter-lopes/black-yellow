@@ -30,7 +30,7 @@ namespace CustomerManagementAPI
             services.AddSingleton(this.Configuration);
             services.AddTransient<ICustomerRepository, CustomerRepository>();
 
-            services.AddTransient<IMessagePublisher>((sp) => new RabbitMQMessagePublisher("localhost", "walter", "123456", "blackyellow"));
+            services.AddTransient<IMessagePublisher>((sp) => new RabbitMQMessagePublisher("localhost", "guest", "guest", "blackyellow"));
 
             services.AddScoped<IDbContext>(sp =>
             {

@@ -20,15 +20,8 @@ namespace CustomerManagementAPI.Repositories
         }
 
         public void Save(Customer customer)
-        {
-            if (customer.Id == null || customer.Id.Equals(""))
-            {
-                this.Collection.InsertOne(customer);
-            }
-            else
-            {
-                this.Collection.FindOneAndReplace(obj => obj.Id.Equals(customer.Id), customer);
-            }
+        {        
+            this.Collection.InsertOne(customer);         
         }
 
         public IEnumerable<Customer> Get()

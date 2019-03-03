@@ -11,14 +11,14 @@ namespace BlackYellow.Infrastructure.Messaging
 
         // Commands
         RegisterCustomer,
-        RegisterVehicle,
+        RegisterProduct,
         PlanMaintenanceJob,
         FinishMaintenanceJob,
 
         // Events
         DayHasPassed,
         CustomerRegistered,
-        VehicleRegistered,
+        ProductRegistered,
         WorkshopPlanningCreated,
         MaintenanceJobPlanned,
         MaintenanceJobFinished

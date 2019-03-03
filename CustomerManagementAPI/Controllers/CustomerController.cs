@@ -23,7 +23,7 @@ namespace CustomerManagementAPI.Controllers
         {
             _customerRepository = customerRepository;
             _messagePublisher = messagePublisher;
-    }
+        }
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] RegisterCustomer command)
         {
@@ -35,7 +35,7 @@ namespace CustomerManagementAPI.Controllers
                 CustomerRegistered e = new CustomerRegistered(Guid.NewGuid(), customer.Id.ToString(), command.Name, command.Email);
                 await _messagePublisher.PublishMessageAsync(e.MessageType, e, "");
 
-                return  Accepted();
+                return Accepted();
             }
             catch (Exception e)
             {

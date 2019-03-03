@@ -13,7 +13,7 @@ namespace ProductManagementAPI.Commands
         public Guid OwnerId { get; set; }
 
         public RegisterProduct(Guid messageId, Guid id, string name, string description, Guid ownerId)
-            : base (messageId, MessageTypes.ProductRegistered)
+            : base (messageId, MessageTypes.RegisterProduct)
         {
             this.Id = id;
             this.Name = name;

@@ -1,10 +1,11 @@
+using System;
 using BlackYellow.Infrastructure.Messaging;
 
 namespace ProductManagementAPI.Commands
 {
     public class RegisterProduct : Command
     {      
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         public string Name { get; set; }
 

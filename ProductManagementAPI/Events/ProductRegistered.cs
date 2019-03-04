@@ -1,6 +1,9 @@
+using BlackYellow.Infrastructure.Messaging;
+using System;
+
 namespace ProductManagementAPI.Events
 {
-    public class ProductRegistered
+    public class ProductRegistered : Event
     {
          public Guid Id { get; set; }
 

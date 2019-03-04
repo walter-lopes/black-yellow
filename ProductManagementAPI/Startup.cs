@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BlackYellow.Infrastructure.Messaging;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using ProductManagementAPI.DataAccess;
 
 namespace ProductManagementAPI
 {
@@ -25,6 +27,20 @@ namespace ProductManagementAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddSingleton(this.Configuration);
+
+            services.AddTransient<IMessagePublisher>((sp) => new RabbitMQMessagePublisher("localhost", "guest", "guest", "blackyellow"));
+
+            services.AddScoped<IDbContext>(sp =>
+            {
+                return new MongoContext()
+                {
+                    ConnectionString = this.Configuration.GetSection("Mongo:ConnectionString").Get<string>(),
+                    DataBase = this.Configuration.GetSection("Mongo:DataBase").Get<string>()
+                };
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

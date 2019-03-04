@@ -1,0 +1,12 @@
+@url = http://localhost:5000
+
+### create discount 
+
+POST {{url}}/api/products 
+Content-Type: application/json
+
+{
+    "name": "Chair",
+    "description": "chair is good",
+    "ownerId":"90476cb5-b9bc-4ff6-98ee-96c6b227c9a5"
+}

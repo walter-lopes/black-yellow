@@ -1,3 +1,5 @@
+using System;
+
 namespace ProductManagementAPI.Models
 {
     public class Product

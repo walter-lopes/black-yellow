@@ -26,6 +26,24 @@ namespace ProductManagementAPI.Controllers
             this._messagePublisher = messagePublisher;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            try
+            {
+                var products = await this.Collection.FindAsync(FilterDefinition<Product>.Empty);
+
+                if (products is null)
+                    return NotFound();
+
+                return Ok(products);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+            }
+        }
+
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] RegisterProduct command)
         {

@@ -10,6 +10,7 @@ namespace ShopManagementAPI.Domain
         public Guid Id { get; private set; }
         public Customer Customer { get; private set; }
         public IEnumerable<OrderItem> OrderItems { get; private set; }
+        public StatusOrder Status { get; private set; }
 
         public double Total
         {
@@ -23,6 +24,23 @@ namespace ShopManagementAPI.Domain
         {
             this.Customer = customer;
             this.OrderItems = orderItems;
+            this.Status = StatusOrder.Pending;
+        }
+
+        public void Complete()
+        {
+            if (this.Status != StatusOrder.Pending)
+                throw new Exception();
+
+            this.Status = StatusOrder.Completed;
+        }
+
+        public void Cancel()
+        {
+            if (this.Status != StatusOrder.Completed)
+                throw new Exception();
+
+            this.Status = StatusOrder.Canceled;
         }
     }
 }

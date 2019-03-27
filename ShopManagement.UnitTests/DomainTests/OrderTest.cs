@@ -1,4 +1,5 @@
 ﻿using ShopManagement.UnitTests.TestDataBuilders;
+using ShopManagementAPI.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,18 @@ namespace ShopManagement.UnitTests.DomainTests
             Assert.Equal(sut.OrderItems.Count(), order.OrderItems.Count());
             Assert.Equal(sut.OrderItems.FirstOrDefault().Price, order.OrderItems.FirstOrDefault().Price);
             Assert.Equal(sut.Total, order.Total);
+            Assert.Equal(StatusOrder.Pending, order.Status);
+        }
+
+        [Fact]
+        public void Order_Should_Has_Completed_Status_When_Is_Completed()
+        {
+            OrderBuilder sut = new OrderBuilder();
+            var order = sut.Build();
+
+            order.Complete();
+
+            Assert.Equal(StatusOrder.Completed, order.Status);
         }
     }
 }

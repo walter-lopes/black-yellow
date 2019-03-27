@@ -5,21 +5,22 @@ using System.Text;
 
 namespace ShopManagement.UnitTests.TestDataBuilders
 {
-    public class ProductBuilder
+    public class OrderItemBuilder
     {
 
         public Guid Id { get; private set; }
         public string Name { get; private set; }
         public double Price { get; private set; }
+        public int Quantity { get; set; }
 
-        public ProductBuilder()
+        public OrderItemBuilder()
         {
             SetDefaults();
         }
 
-        public Product Build()
+        public OrderItem Build()
         {
-            return new Product(this.Id, this.Name, this.Price);
+            return new OrderItem(this.Id, this.Name, this.Price, this.Quantity);
         }
 
         private void SetDefaults()
@@ -27,6 +28,7 @@ namespace ShopManagement.UnitTests.TestDataBuilders
             this.Id = Guid.NewGuid();
             this.Name = "Nike 90 air max";
             this.Price = 200;
+            this.Quantity = 2;
         }
     }
 }

@@ -17,8 +17,8 @@ namespace ShopManagement.UnitTests.DomainTests
 
             Assert.Equal(sut.Customer.Name, order.Customer.Name);
             Assert.Equal(sut.Customer.Email, order.Customer.Email);
-            Assert.Equal(sut.Products.Count(), order.Products.Count());
-            Assert.Equal(sut.Products.FirstOrDefault().Price, order.Products.FirstOrDefault().Price);
+            Assert.Equal(sut.OrderItems.Count(), order.OrderItems.Count());
+            Assert.Equal(sut.OrderItems.FirstOrDefault().Price, order.OrderItems.FirstOrDefault().Price);
             Assert.Equal(sut.Total, order.Total);
         }
     }

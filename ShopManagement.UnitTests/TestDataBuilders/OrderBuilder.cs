@@ -11,13 +11,13 @@ namespace ShopManagement.UnitTests.TestDataBuilders
         public Guid Id { get; private set; }
         public CustomerBuilder Customer { get; private set; }
 
-        public IEnumerable<ProductBuilder> Products { get; private set; }
+        public IEnumerable<OrderItemBuilder> OrderItems { get; private set; }
 
         public double Total
         {
             get
             {
-                return this.Products.Sum(p => p.Price);
+                return this.OrderItems.Sum(p => p.Price);
             }
         }
 
@@ -30,7 +30,7 @@ namespace ShopManagement.UnitTests.TestDataBuilders
         public Order Build()
         {
             Customer customer = Customer.Build();
-            IEnumerable<Product> products = Products.Select(p => p.Build());
+            IEnumerable<OrderItem> products = OrderItems.Select(p => p.Build());
             return new Order(customer, products);
         }
 
@@ -38,7 +38,7 @@ namespace ShopManagement.UnitTests.TestDataBuilders
         {
             this.Id = Guid.NewGuid();
             this.Customer = new CustomerBuilder();
-            this.Products = new List<ProductBuilder> { new ProductBuilder() };
+            this.OrderItems = new List<OrderItemBuilder> { new OrderItemBuilder() };
         }
     }
 }

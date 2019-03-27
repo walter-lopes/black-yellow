@@ -9,21 +9,20 @@ namespace ShopManagementAPI.Domain
     {
         public Guid Id { get; private set; }
         public Customer Customer { get; private set; }
-
-        public IEnumerable<Product> Products { get; private set; }
+        public IEnumerable<OrderItem> OrderItems { get; private set; }
 
         public double Total
         {
             get
             {
-                return this.Products.Sum(p => p.Price);
+                return this.OrderItems.Sum(p => p.SubTotal);
             }
         }
 
-        public Order(Customer customer, IEnumerable<Product> products)
+        public Order(Customer customer, IEnumerable<OrderItem> orderItems)
         {
             this.Customer = customer;
-            this.Products = products;
+            this.OrderItems = orderItems;
         }
     }
 }

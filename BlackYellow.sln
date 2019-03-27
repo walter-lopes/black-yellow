@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductManagementAPI", "Pro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopManagementAPI", "ShopManagementAPI\ShopManagementAPI.csproj", "{911F34CE-7F32-4653-8C14-0B607BD7B58A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopManagement.UnitTests", "ShopManagement.UnitTests\ShopManagement.UnitTests.csproj", "{5DC83823-E054-4CD7-8249-CB964EC15E04}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{911F34CE-7F32-4653-8C14-0B607BD7B58A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{911F34CE-7F32-4653-8C14-0B607BD7B58A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{911F34CE-7F32-4653-8C14-0B607BD7B58A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DC83823-E054-4CD7-8249-CB964EC15E04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DC83823-E054-4CD7-8249-CB964EC15E04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DC83823-E054-4CD7-8249-CB964EC15E04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DC83823-E054-4CD7-8249-CB964EC15E04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

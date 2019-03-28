@@ -4,12 +4,14 @@ namespace ProductManagementAPI.Models
 {
     public class Product
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; private set; }
 
-        public string Name { get; set; }
+        public string Name { get; private set; }
 
         public string Description { get; set; }
 
-        public Guid OwnerId { get; set; }
+        public double Price { get; set; }
+
+        public int Quantity {get; set;}
     }
 }

@@ -4,12 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ShopManagementAPI.Commands;
 
 namespace ShopManagementAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class OrderController : ControllerBase
+    public class ShopController : ControllerBase
     {
         // GET: api/Order
         [HttpGet]
@@ -27,7 +28,8 @@ namespace ShopManagementAPI.Controllers
 
         // POST: api/Order
         [HttpPost]
-        public void Post([FromBody] string value)
+        [Route("Cart")]
+        public void Cart([FromBody] AddOrderItem command)
         {
         }
 

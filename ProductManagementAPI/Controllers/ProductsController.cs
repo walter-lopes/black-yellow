@@ -49,18 +49,12 @@ namespace ProductManagementAPI.Controllers
         {
             try
             {
-                Product product = new Product()
-                {
-                    Id = command.Id,
-                    Description = command.Description,
-                    Name = command.Name,
-                    OwnerId = command.OwnerId
-                };
+                Product product = new Product(command.Id, command.Name, command.Description, command.Price, command.Quantity);
 
                 this.Collection.InsertOne(product);
 
                 ProductRegistered e = new ProductRegistered(Guid.NewGuid(), product.Id, command.Name,
-                command.Description, command.OwnerId);
+                command.Description, command.Price, command.Quantity);
 
                 await _messagePublisher.PublishMessageAsync(e.MessageType, e, "");
 

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using BlackYellow.CustomerManagementAPI.Events;
 using BlackYellow.Infrastructure.Messaging;
 using CustomerManagementAPI.Commands;
-using CustomerManagementAPI.Models;
+using CustomerManagementAPI.Domain;
 using CustomerManagementAPI.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -29,7 +29,7 @@ namespace CustomerManagementAPI.Controllers
         {
             try
             {
-                Customer customer = new Customer() { Email = command.Email, Name = command.Name };
+                Customer customer = new Customer(command.Name, command.Email);
                 _customerRepository.Save(customer);
 
                 CustomerRegistered e = new CustomerRegistered(Guid.NewGuid(), customer.Id.ToString(), command.Name, command.Email);

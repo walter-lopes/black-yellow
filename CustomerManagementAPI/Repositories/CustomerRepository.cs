@@ -1,5 +1,5 @@
 ﻿using CustomerManagementAPI.DataAccess;
-using CustomerManagementAPI.Models;
+using CustomerManagementAPI.Domain;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;

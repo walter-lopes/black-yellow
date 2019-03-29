@@ -16,8 +16,7 @@ namespace ShopManagement.UnitTests.DomainTests
             OrderBuilder sut = new OrderBuilder();
             var order = sut.Build();
 
-            Assert.Equal(sut.Customer.Name, order.Customer.Name);
-            Assert.Equal(sut.Customer.Email, order.Customer.Email);
+            Assert.Equal(sut.Customer.Id, order.CustomerId);
             Assert.Equal(sut.OrderItems.Count(), order.OrderItems.Count());
             Assert.Equal(sut.OrderItems.FirstOrDefault().Price, order.OrderItems.FirstOrDefault().Price);
             Assert.Equal(sut.Total, order.Total);

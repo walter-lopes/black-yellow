@@ -31,7 +31,7 @@ namespace ShopManagement.UnitTests.TestDataBuilders
         {
             Customer customer = Customer.Build();
             IEnumerable<OrderItem> products = OrderItems.Select(p => p.Build());
-            return new Order(customer, products);
+            return new Order(customer.Id, products);
         }
 
         private void SetDefaults()

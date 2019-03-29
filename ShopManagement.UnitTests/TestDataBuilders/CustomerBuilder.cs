@@ -18,12 +18,11 @@ namespace ShopManagement.UnitTests.TestDataBuilders
 
         public Customer Build()
         {
-            return new Customer(this.Id, this.Name, this.Email);
+            return new Customer(this.Name, this.Email);
         }
 
         private void SetDefaults()
         {
-            this.Id = Guid.NewGuid();
             this.Name = "Walter Vinicius";
             this.Email = "walter.vlopes@gmail.com";
         }

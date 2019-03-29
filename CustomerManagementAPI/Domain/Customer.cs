@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace ShopManagementAPI.Domain
+namespace CustomerManagementAPI.Domain
 {
     public class Customer
     {
-        public Guid Id { get; private set; } = new Guid();
+        public Guid Id { get; private set; } = Guid.NewGuid();
 
         public string Name { get; private set; }
 

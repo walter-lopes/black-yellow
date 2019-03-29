@@ -1,4 +1,4 @@
-﻿using CustomerManagementAPI.Models;
+﻿using CustomerManagementAPI.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;

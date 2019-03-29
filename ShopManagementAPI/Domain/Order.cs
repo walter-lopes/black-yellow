@@ -8,7 +8,7 @@ namespace ShopManagementAPI.Domain
     public class Order
     {
         public Guid Id { get; private set; }
-        public Customer Customer { get; private set; }
+        public Guid CustomerId { get; private set; }
         public IEnumerable<OrderItem> OrderItems { get; private set; }
         public StatusOrder Status { get; private set; }
 
@@ -20,12 +20,13 @@ namespace ShopManagementAPI.Domain
             }
         }
 
-        public Order(Customer customer, IEnumerable<OrderItem> orderItems)
+        public Order(Guid customerId, IEnumerable<OrderItem> orderItems)
         {
-            this.Customer = customer;
+            this.CustomerId = customerId;
             this.OrderItems = orderItems;
             this.Status = StatusOrder.Pending;
         }
+       
 
         public void Complete()
         {

@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopManagementAPI", "ShopMa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopManagement.UnitTests", "ShopManagement.UnitTests\ShopManagement.UnitTests.csproj", "{5DC83823-E054-4CD7-8249-CB964EC15E04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerManagment.UnitTests", "..\Entregas CDT\robo\dotnet-csarobot-portal-cdt\CustomerManagment.UnitTests\CustomerManagment.UnitTests.csproj", "{F5D2469A-7F01-4647-A642-774A04F4EF97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerManagment.UnitTests", "CustomerManagment.UnitTests\CustomerManagment.UnitTests.csproj", "{2B5780A2-23CB-48CD-9CE5-2605F2902919}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +47,10 @@ Global
 		{5DC83823-E054-4CD7-8249-CB964EC15E04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DC83823-E054-4CD7-8249-CB964EC15E04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DC83823-E054-4CD7-8249-CB964EC15E04}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F5D2469A-7F01-4647-A642-774A04F4EF97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F5D2469A-7F01-4647-A642-774A04F4EF97}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F5D2469A-7F01-4647-A642-774A04F4EF97}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F5D2469A-7F01-4647-A642-774A04F4EF97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B5780A2-23CB-48CD-9CE5-2605F2902919}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B5780A2-23CB-48CD-9CE5-2605F2902919}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B5780A2-23CB-48CD-9CE5-2605F2902919}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B5780A2-23CB-48CD-9CE5-2605F2902919}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

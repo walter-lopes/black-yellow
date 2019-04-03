@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -32,7 +32,7 @@ namespace ProductManagementAPI
 
             services.AddTransient<IMessagePublisher>((sp) => new RabbitMQMessagePublisher("localhost", "guest", "guest", "blackyellow"));
 
-            services.AddScoped<IDbContext>(sp =>
+            services.AddScoped<IDbContext>(sp  =>
             {
                 return new MongoContext()
                 {

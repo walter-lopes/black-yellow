@@ -54,7 +54,7 @@ namespace ShopManagementEventHandler
             };
 
             // start event-handler
-            EventHandler eventHandler = new EventHandler(messageHandler, dbContext);
+            EventHandler eventHandler = new EventHandler(messageHandler);
             eventHandler.Start();
 
             if (_env == "Development")

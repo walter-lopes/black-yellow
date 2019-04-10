@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ShopManagementAPI.Commands;
+using ShopManagementAPI.Domain;
+using ShopManagementAPI.Repositories;
 
 namespace ShopManagementAPI.Controllers
 {
@@ -12,6 +14,15 @@ namespace ShopManagementAPI.Controllers
     [ApiController]
     public class ShopController : ControllerBase
     {
+        private readonly IOrderItemRepository _orderItemRepository;
+        private readonly IOrderRepository _orderRepository;
+
+        public ShopController(IOrderItemRepository orderItemRepository, IOrderRepository orderRepository)
+        {
+            _orderItemRepository = orderItemRepository;
+            _orderRepository = orderRepository;
+        }
+
         // GET: api/Order
         [HttpGet]
         public IEnumerable<string> Get()
@@ -31,18 +42,19 @@ namespace ShopManagementAPI.Controllers
         [Route("Cart")]
         public void Cart([FromBody] AddOrderItem command)
         {
+            OrderItem orderItem = new OrderItem(command.Id, command.Name, command.Price, command.Quantity);
+
+            _orderItemRepository.Save(orderItem);
         }
 
-        // PUT: api/Order/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        // POST: api/Order
+        [HttpPost]
+        [Route("Order")]
+        public void Order([FromBody] CreateOrder command)
         {
-        }
+            Order order = new Order(command.CustomerId, command.OrderItems);
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            _orderRepository.Save(order);
         }
     }
 }

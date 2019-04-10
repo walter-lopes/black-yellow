@@ -12,15 +12,11 @@ namespace BlackYellow.Infrastructure.Messaging
         // Commands
         RegisterCustomer,
         RegisterProduct,
-        PlanMaintenanceJob,
-        FinishMaintenanceJob,
+        CreateOrder,
+        AddOrderItem,
 
         // Events
-        DayHasPassed,
         CustomerRegistered,
         ProductRegistered,
-        WorkshopPlanningCreated,
-        MaintenanceJobPlanned,
-        MaintenanceJobFinished
     }
 }

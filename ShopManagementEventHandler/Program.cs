@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Polly;
 using Serilog;
 using ShopManagementEventHandler.Context;
+using ShopManagementEventHandler.Repositories;
 using System;
 using System.IO;
 using System.Threading;
@@ -54,7 +55,7 @@ namespace ShopManagementEventHandler
             };
 
             // start event-handler
-            EventHandler eventHandler = new EventHandler(messageHandler);
+            EventHandler eventHandler = new EventHandler(messageHandler, new CustomerRepository(dbContext));
             eventHandler.Start();
 
             if (_env == "Development")

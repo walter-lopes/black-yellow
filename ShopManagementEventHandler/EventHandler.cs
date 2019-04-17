@@ -1,4 +1,8 @@
 ﻿using BlackYellow.Infrastructure.Messaging;
+using Newtonsoft.Json.Linq;
+using ShopManagementAPI.Domain;
+using ShopManagementEventHandler.Events;
+using ShopManagementEventHandler.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,10 +13,12 @@ namespace ShopManagementEventHandler
     public class EventHandler : IMessageHandlerCallback
     {
         private readonly IMessageHandler _messageHandler;
+        private readonly ICustomerRepository _customerRepository;
 
-        public EventHandler(IMessageHandler messageHandler)
+        public EventHandler(IMessageHandler messageHandler, ICustomerRepository customerRepository)
         {
             _messageHandler = messageHandler;
+            _customerRepository = customerRepository;
         }
 
         public void Start()
@@ -25,9 +31,17 @@ namespace ShopManagementEventHandler
             _messageHandler.Stop();
         }
 
-        public Task<bool> HandleMessageAsync(MessageTypes messageType, string message)
+        public async Task<bool> HandleMessageAsync(MessageTypes messageType, string message)
         {
-            throw new NotImplementedException();
+            JObject messageObject = MessageSerializer.Deserialize(message);
+            return await HandleAsync(messageObject.ToObject<CustomerRegistered>());
+        }
+        
+        private async Task<bool> HandleAsync(CustomerRegistered e)
+        {
+            var customer = new Customer(e.Name, e.Email);
+            await _customerRepository.SaveAsync(customer);
+            return true;
         }
     }
 }

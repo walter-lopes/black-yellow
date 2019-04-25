@@ -10,19 +10,19 @@ using System.Threading;
 
 namespace ShopManagementEventHandler
 {
-    class Program
+    public class Program
     {
         private static string _env;
         public static IConfigurationRoot Config { get; private set; }
 
-        static Program()
+         static Program()
         {
-            _env = Environment.GetEnvironmentVariable("PITSTOP_ENVIRONMENT");
+            _env = "Development";
 
             Config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json")
-                .AddJsonFile($"appsettings.{_env}.json", optional: false)
+               // .AddJsonFile($"appsettings.{_env}.json", optional: false)
                 .Build();
 
             Log.Logger = new LoggerConfiguration()
@@ -34,19 +34,13 @@ namespace ShopManagementEventHandler
 
         static void Main(string[] args)
         {
-
+            Startup();
         }
 
         private static void Startup()
         {
-            // setup RabbitMQ
-            var configSection = Config.GetSection("RabbitMQ");
-            string host = configSection["Host"];
-            string userName = configSection["UserName"];
-            string password = configSection["Password"];
-
             // setup messagehandler
-            RabbitMQMessageHandler messageHandler = new RabbitMQMessageHandler(host, userName, password, "BlackYellow", "ShopManagement", "");
+            RabbitMQMessageHandler messageHandler = new RabbitMQMessageHandler("localhost", "guest", "guest", "blackyellow", "ShopManagement", "");
 
             var dbContext =  new MongoContext()
             {
@@ -62,7 +56,7 @@ namespace ShopManagementEventHandler
             {
                 Log.Information("ShopManagement Eventhandler started.");
                 Console.WriteLine("Press any key to stop...");
-                Console.ReadKey(true);
+                Console.ReadKey();
                 eventHandler.Stop();
             }
             else

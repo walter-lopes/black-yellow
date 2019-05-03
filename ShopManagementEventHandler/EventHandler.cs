@@ -34,7 +34,9 @@ namespace ShopManagementEventHandler
         public async Task<bool> HandleMessageAsync(MessageTypes messageType, string message)
         {
             JObject messageObject = MessageSerializer.Deserialize(message);
+            
             return await HandleAsync(messageObject.ToObject<CustomerRegistered>());
+          
         }
         
         private async Task<bool> HandleAsync(CustomerRegistered e)
@@ -43,5 +45,7 @@ namespace ShopManagementEventHandler
             await _customerRepository.SaveAsync(customer);
             return true;
         }
+
+       
     }
 }

@@ -9,11 +9,11 @@ namespace ShopManagementAPI.Domain
     {
         public Guid Id { get; private set; }
         public string Name { get; private set; }
-        public double Price { get; private set; }
+        public decimal Price { get; private set; }
         public int Quantity { get; private set; }
-        public double SubTotal { get; private set; }
+        public decimal SubTotal { get; private set; }
 
-        public OrderItem(Guid id, string name, double price, int quantity)
+        public OrderItem(Guid id, string name, decimal price, int quantity)
         {
             this.Id = id;
             this.Name = name;
@@ -29,7 +29,7 @@ namespace ShopManagementAPI.Domain
             this.Quantity = quantity;
         }
 
-        public void SetPrice(double price)
+        public void SetPrice(decimal price)
         {
             if (price <= 0) throw new Exception();
 

@@ -12,7 +12,7 @@ namespace ShopManagementAPI.Domain
         public IEnumerable<OrderItem> OrderItems { get; private set; }
         public StatusOrder Status { get; private set; }
 
-        public double Total
+        public decimal Total
         {
             get
             {

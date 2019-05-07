@@ -8,8 +8,7 @@ namespace ShopManagementAPI.Commands
     public class CreateOrder : Command
     {
         public Guid CustomerId { get; set; }
-        public IEnumerable<OrderItem> OrderItems { get; set; }
-
+        public Guid Id { get; set; }
         public CreateOrder(Guid messageId, MessageTypes messageType) : base(messageId, messageType)
         {
         }

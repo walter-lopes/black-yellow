@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using ShopManagementAPI.Commands;
 using ShopManagementAPI.Domain;
 using ShopManagementAPI.Repositories;
+using ShopManagementAPI.Services;
 
 namespace ShopManagementAPI.Controllers
 {
@@ -16,43 +17,26 @@ namespace ShopManagementAPI.Controllers
     {
         private readonly IOrderItemRepository _orderItemRepository;
         private readonly IOrderRepository _orderRepository;
+        private readonly ICustomerService _customerService;
 
-        public ShopController(IOrderItemRepository orderItemRepository, IOrderRepository orderRepository)
+        public ShopController(IOrderItemRepository orderItemRepository, IOrderRepository orderRepository, ICustomerService customerService)
         {
             _orderItemRepository = orderItemRepository;
             _orderRepository = orderRepository;
+            _customerService = customerService;
         }
 
-        // GET: api/Order
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET: api/Order/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST: api/Order
-        [HttpPost]
-        [Route("Cart")]
-        public void Cart([FromBody] AddOrderItem command)
-        {
-            OrderItem orderItem = new OrderItem(command.Id, command.Name, command.Price, command.Quantity);
-
-            _orderItemRepository.Save(orderItem);
-        }
-
-        // POST: api/Order
         [HttpPost]
         [Route("Order")]
-        public void Order([FromBody] CreateOrder command)
+        public async Task Order([FromBody] CreateOrder command)
         {
-            Order order = new Order(command.CustomerId, command.OrderItems);
+
+            var cart = await _customerService.GetCartAsync(command.CustomerId);
+
+            var items = cart.Items.Select(i => new OrderItem(i.ProductId,
+               i.ProductName, i.UnitPrice, i.Quantity)).ToList();
+
+            Order order = new Order(command.CustomerId, items);
 
             _orderRepository.Save(order);
         }

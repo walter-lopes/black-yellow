@@ -33,5 +33,11 @@ namespace ShopManagementAPI.Repositories
         {
             this.Collection.InsertOne(order);
         }
+
+        public Order GetById(Guid id)
+        {
+            var result = this.Collection.Find(x => x.Id == id);
+            return result;
+        }
     }
 }

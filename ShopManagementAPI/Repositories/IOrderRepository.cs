@@ -10,6 +10,8 @@ namespace ShopManagementAPI.Repositories
     {
         IEnumerable<Order> Get();
 
+        Order GetById(Guid id);
+
         void Save(Order order);
     }
 }

@@ -40,5 +40,23 @@ namespace ShopManagementAPI.Controllers
 
             _orderRepository.Save(order);
         }
+
+        [HttpPost]
+        [Route("Complete")]
+        public async Task Complete([FromBody] CreateOrder command)
+        {
+            Order order = _orderRepository.GetById(command.Id);
+            order.Complete();
+            _orderRepository.Save(order);
+        }
+
+        [HttpPost]
+        [Route("Cancel")]
+        public async Task Cancel([FromBody] CreateOrder command)
+        {
+            Order order = _orderRepository.GetById(command.Id);
+            order.Cancel();
+            _orderRepository.Save(order);
+        }
     }
 }

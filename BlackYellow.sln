@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerManagementAPI", "CustomerManagementAPI\CustomerManagementAPI.csproj", "{23FFDCA6-B3B1-41D9-8576-8F2B62004B0D}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{D9673DAA-082C-4565-BA1D-AB61512D9D27}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{D58B1DE3-589C-435F-9953-494D7B5318D8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductManagementAPI", "ProductManagementAPI\ProductManagementAPI.csproj", "{7E7853C6-F144-4325-AADC-A3790BBBBAF0}"
@@ -17,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopManagement.UnitTests", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerManagment.UnitTests", "CustomerManagment.UnitTests\CustomerManagment.UnitTests.csproj", "{2B5780A2-23CB-48CD-9CE5-2605F2902919}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopManagementEventHandler", "ShopManagementEventHandler\ShopManagementEventHandler.csproj", "{37B4572C-402E-45A9-8E11-DF074F79D52E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopManagementEventHandler", "ShopManagementEventHandler\ShopManagementEventHandler.csproj", "{37B4572C-402E-45A9-8E11-DF074F79D52E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,14 +33,6 @@ Global
 		{23FFDCA6-B3B1-41D9-8576-8F2B62004B0D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{23FFDCA6-B3B1-41D9-8576-8F2B62004B0D}.Release|x64.ActiveCfg = Release|Any CPU
 		{23FFDCA6-B3B1-41D9-8576-8F2B62004B0D}.Release|x64.Build.0 = Release|Any CPU
-		{D9673DAA-082C-4565-BA1D-AB61512D9D27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D9673DAA-082C-4565-BA1D-AB61512D9D27}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D9673DAA-082C-4565-BA1D-AB61512D9D27}.Debug|x64.ActiveCfg = Debug|x64
-		{D9673DAA-082C-4565-BA1D-AB61512D9D27}.Debug|x64.Build.0 = Debug|x64
-		{D9673DAA-082C-4565-BA1D-AB61512D9D27}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D9673DAA-082C-4565-BA1D-AB61512D9D27}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D9673DAA-082C-4565-BA1D-AB61512D9D27}.Release|x64.ActiveCfg = Release|x64
-		{D9673DAA-082C-4565-BA1D-AB61512D9D27}.Release|x64.Build.0 = Release|x64
 		{D58B1DE3-589C-435F-9953-494D7B5318D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D58B1DE3-589C-435F-9953-494D7B5318D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D58B1DE3-589C-435F-9953-494D7B5318D8}.Debug|x64.ActiveCfg = Debug|x64

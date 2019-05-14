@@ -13,11 +13,11 @@ namespace ShopManagement.UnitTests.TestDataBuilders
 
         public IEnumerable<OrderItemBuilder> OrderItems { get; private set; }
 
-        public double Total
+        public decimal Total
         {
             get
             {
-                return this.OrderItems.Sum(p => p.Price);
+                return this.OrderItems.Sum(p => p.SubTotal);
             }
         }
 

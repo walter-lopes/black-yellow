@@ -38,14 +38,12 @@ namespace ShopManagementEventHandler
             return await HandleAsync(messageObject.ToObject<CustomerRegistered>());
           
         }
-        
+
         private async Task<bool> HandleAsync(CustomerRegistered e)
         {
             var customer = new Customer(e.Name, e.Email);
             await _customerRepository.SaveAsync(customer);
             return true;
-        }
-
-       
+        }     
     }
 }

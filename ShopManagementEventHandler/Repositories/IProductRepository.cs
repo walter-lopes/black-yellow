@@ -6,6 +6,6 @@ namespace ShopManagementEventHandler.Repositories
 {
     public interface IProductRepository
     {
-        public void Save();
+        void Save();
     }
 }

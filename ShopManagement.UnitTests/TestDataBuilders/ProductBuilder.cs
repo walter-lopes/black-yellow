@@ -10,8 +10,16 @@ namespace ShopManagement.UnitTests.TestDataBuilders
 
         public Guid Id { get; private set; }
         public string Name { get; private set; }
-        public double Price { get; private set; }
+        public decimal Price { get; private set; }
         public int Quantity { get; set; }
+
+        public decimal SubTotal
+        {
+            get
+            {
+                return this.Price * this.Quantity;
+            }
+        }
 
         public OrderItemBuilder()
         {

@@ -1,16 +1,15 @@
-FROM microsoft/dotnet:sdk AS build-env
+FROM microsoft/dotnet:2.2-sdk AS build-env
 WORKDIR /app
 
-# copy everything and build the project
 
 COPY . ./
-RUN dotnet restore CustomerManagementAPI.csproj
-RUN dotnet publish CustomerManagementAPI.csproj -c Release -o out
+RUN dotnet publish -c Release -o out
 
-FROM microsoft/dotnet:aspnetcore-runtime
+FROM microsoft/dotnet:2.2-aspnetcore-runtime
 ENV ASPNETCORE_URLS=http://+:5000
+ENV ASPNETCORE_ENVIRONMENT Development
 WORKDIR /app
-COPY --from=build-env /app/CustomerManagementAPI/out ./
-
+CMD ls
+COPY --from=build-env  /app/out/ .
 
 ENTRYPOINT ["dotnet", "BlackYellow.CustomerManagementAPI.dll"]

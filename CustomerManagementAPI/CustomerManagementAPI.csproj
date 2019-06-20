@@ -22,7 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+    <Reference Include="BlackYellow.Infrastructure">
+      <HintPath>Libs\BlackYellow.Infrastructure.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 

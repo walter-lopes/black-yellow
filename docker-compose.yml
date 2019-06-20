@@ -1,6 +1,17 @@
 version: '3.5'
 
 services:
+  customer.api:
+    image: customer-api
+    container_name: customer-api
+    ports:
+      - "5001:5000"
+    build:
+      context: ./CustomerManagementAPI
+      dockerfile: Dockerfile 
+    networks:
+      - blackyellow
+
   mongo:
     image: mongo:3.4
     container_name: mongo
